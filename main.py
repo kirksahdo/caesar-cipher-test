@@ -8,10 +8,6 @@ class CaesarCipherTest(unittest.TestCase):
 
 def caesar_cipher(N, text):
     letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    encrypt_text = [(letters[(letters.find(letter) - N) % 25] ) for letter in text]
+    encrypt_text = [(letters[(letters.find(letter) - N) % 26] ) for letter in text]
 
     return "".join(encrypt_text)
-
-
-
-print(caesar_cipher(2, "VQREQFGT"))
