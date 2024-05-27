@@ -1,17 +1,31 @@
-import unittest
-
-class CaesarCipherTest(unittest.TestCase):
-
-    def test_case_1(self):
-        pass
-
-
-def caesar_cipher(N, text):
+def caesar_cipher_decrypt(ciphertext, shift):
     letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    encrypt_text = [(letters[(letters.find(letter) - N) % 26] ) for letter in text]
+    decrypted_text = []
+    for letter in ciphertext:
+        pos = letters.find(letter)
+        new_pos = (pos - shift) % 26
+        decrypted_text.append(letters[new_pos])
+    return "".join(decrypted_text)
 
-    return "".join(encrypt_text)
+
+def process_cases(cases):
+    results = []
+    for case in cases:
+        ciphertext, shift = case
+        decrypted_text = caesar_cipher_decrypt(ciphertext, shift)
+        results.append(decrypted_text)
+    return results
 
 
+N = int(input())
+cases = []
 
-print(caesar_cipher(25, "ZWBGLZ"))
+for _ in range(N):
+    ciphertext = input().strip()
+    shift = int(input().strip())
+    cases.append((ciphertext, shift))
+
+results = process_cases(cases)
+
+for result in results:
+    print(result)
