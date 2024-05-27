@@ -1,5 +1,5 @@
+from main import caesar_cipher_decrypt
 import unittest
-from caesar_cipher import caesar_cipher_decrypt
 
 
 class CaesarCipherTest(unittest.TestCase):
@@ -28,9 +28,6 @@ class CaesarCipherTest(unittest.TestCase):
     def test_no_displacement(self):
         self.assertEqual(caesar_cipher_decrypt("ABCDE", 0), "ABCDE")
 
-    def test_maximum_displacement(self):
-        self.assertEqual(caesar_cipher_decrypt("ABCDE", 25), "ZABCD")
-
     def test_inverse_displacement(self):
         self.assertEqual(caesar_cipher_decrypt("CDEFG", 2), "ABCDE")
 
@@ -48,6 +45,15 @@ class CaesarCipherTest(unittest.TestCase):
 
     def test_large_shift(self):
         self.assertEqual(caesar_cipher_decrypt("HELLO", 52), "HELLO")
+
+    def test_long_text(self):
+        self.assertEqual(
+            caesar_cipher_decrypt("THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG", 3),
+            "QEBNRFZHYOLTKCLUGRJMPLSBOQEBIXWVALD",
+        )
+
+    def test_negative_shift(self):
+        self.assertEqual(caesar_cipher_decrypt("XYZ", -1), "YZA")
 
 
 if __name__ == "__main__":

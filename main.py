@@ -17,15 +17,16 @@ def process_cases(cases):
     return results
 
 
-N = int(input())
-cases = []
+if __name__ == "__main__":
+    N = int(input())
+    cases = []
 
-for _ in range(N):
-    ciphertext = input().strip()
-    shift = int(input().strip())
-    cases.append((ciphertext, shift))
+    for _ in range(N):
+        ciphertext = input().strip()
+        shift = int(input().strip())
+        cases.append((ciphertext, shift))
 
-results = process_cases(cases)
+    results = process_cases(cases)
 
-for result in results:
-    print(result)
+    for result in results:
+        print(result)
